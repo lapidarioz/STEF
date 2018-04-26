@@ -67,3 +67,5 @@ neutral_features_list = [
     'middle_lower_lip',
     'lower_lip'
 ]
+
+neutral_features = [facial_features.get(feature) for feature in neutral_features_list]

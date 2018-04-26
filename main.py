@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import interpolate
 import landmarks
-from data.facial_features_points import facial_features, pupils
+from data.facial_features_points import neutral_features, pupils
 
 
 def plot_spline(points, show_points=False):
@@ -32,7 +32,7 @@ def plot_circle(point, radius, show_points=False):
 
 def main():
     points = landmarks.calculate()
-    for feature_name, feature_points in facial_features.items():
+    for feature_points in neutral_features:
         plot_spline(points[feature_points])
 
     for feature_points in pupils['positions']:
