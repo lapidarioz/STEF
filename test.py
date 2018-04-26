@@ -4,38 +4,36 @@ import numpy as np
 import pandas as pd
 from scipy import interpolate
 import landmarks
+from data.facial_features_points import facial_features
 
 
-def plot_spline(points):
+def plot_spline(points, show_points=False):
+    # points = points.iloc[:, np.argsort(points.loc['x'])]
     x = np.array(points.loc['x'])
     y = np.array(points.loc['y'])
 
-    l = len(x)
+    tck, u = interpolate.splprep([x, y], k=len(x)-1, s=0)
+    u = np.linspace(0, 1, num=50, endpoint=True)
+    x2, y2 = interpolate.splev(u, tck)
 
-    t = np.linspace(0, 1, l - 2, endpoint=True)
-    t = np.append([0, 0, 0], t)
-    t = np.append(t, [1, 1, 1])
-
-    tck = [t, [x, y], 3]
-    u3 = np.linspace(0, 1, (max(l * 2, 70)), endpoint=True)
-    out = interpolate.splev(u3, tck)
-
-    plt.plot(x, y, 'ro')
-    plt.plot(out[0], out[1], 'b', linewidth=2.0)
-    plt.legend(loc='best')
-    plt.ylim(max(y) + 20, 0)
+    if show_points:
+        plt.plot(x, y, 'ro')
+    plt.plot(x2, y2, 'b')
 
 
 def main():
     points = landmarks.calculate()
-    facial_features = pd.read_csv('data/facial_features_points.csv', index_col=0, header=None)
-    for feature_name, feature_points in facial_features.iterrows():
+    for feature_name, feature_points in facial_features.items():
         plot_spline(points[feature_points])
     # right_eyebrow.reverse()
     # print(right_eyebrow)
     # plt.axis('off')
+    x = points.loc['x']
+    y = points.loc['y']
+    # plt.axis([x.min() - 1, x.max() + 1, y.max() + 1, y.min() - 1])
     plt.show()
 
 
 if __name__ == '__main__':
     main()
+

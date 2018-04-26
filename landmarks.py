@@ -1,6 +1,6 @@
-import pandas as pd
 from pathlib import Path
-from scipy.interpolate import interp1d
+
+import pandas as pd
 
 
 def calculate(distance_file='data/caucasiano.csv'):
@@ -12,7 +12,7 @@ def calculate(distance_file='data/caucasiano.csv'):
 
     nse = distances['ven'] - distances['vn']
 
-    z['n'] = (0,
+    z['n'] = (distances['ven'] / 2,
               distances['vn'])
 
     z['che'] = (z['n'][0] - distances['chsto'],
@@ -110,7 +110,7 @@ def calculate(distance_file='data/caucasiano.csv'):
                 z['p6e'][1])
 
     z['p8e'] = (z['p6e'][0] - 4,
-                z['p6e'][1])
+                z['p6e'][1] - 1)
 
     z['p3e'] = (z['p6e'][0],
                 z['p6e'][1] - 1.5)
@@ -138,7 +138,7 @@ def calculate(distance_file='data/caucasiano.csv'):
                 z['p6d'][1])
 
     z['p8d'] = (z['p6d'][0] + 4,
-                z['p6d'][1])
+                z['p6d'][1] - 1)
 
     z['p3d'] = (z['p6d'][0],
                 z['p6d'][1] - 1.5)
@@ -214,6 +214,7 @@ def calculate(distance_file='data/caucasiano.csv'):
                 z['vd'][1] + distances['vtr'])
 
     z['v'] = (0, 0)
+    z['v2'] = (z['v'][0], z['v'][1]-130)
 
     z['gnd'] = (z['n'][0],
                 z['n'][1] + distances['ngn'])
@@ -229,6 +230,14 @@ def calculate(distance_file='data/caucasiano.csv'):
 
     z['eud'] = (z['n'][0] + (distances['eueu'] / 2),
                 z['trd'][1])
+
+    # queixo
+    z['ore_nge'] = (z['ore'][0],
+                    z['gne'][1] - 10)
+    z['gnd2'] = (z['gnd'][0],
+                    z['gnd'][1] + 20)
+    z['ord_ngd'] = (z['ord'][0],
+                    z['gnd'][1] - 10)
 
     # rugas testa cima
     z['fte'] = (z['n'][0] - 0.5 * distances['ftft'],
