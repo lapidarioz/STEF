@@ -303,7 +303,7 @@ def calculate(distance_file='data/caucasiano.csv'):
     z['pupilad'] = (z['se'][0] + distances['pupilse'],
                     z['ore'][1] - distances['pupilor'])
 
-    pupilaR = 0.6 * distances['pspi']
+    pupilaR = 0.4 * distances['pspi']
     z['pupilaR'] = (pupilaR, pupilaR)
 
     # rugas sobrancelha

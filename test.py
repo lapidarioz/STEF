@@ -1,10 +1,8 @@
-from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 from scipy import interpolate
 import landmarks
-from data.facial_features_points import facial_features
+from data.facial_features_points import facial_features, pupils
 
 
 def plot_spline(points, show_points=False):
@@ -21,10 +19,24 @@ def plot_spline(points, show_points=False):
     plt.plot(x2, y2, 'b')
 
 
+def plot_circle(point, radius, show_points=False):
+    circle = plt.Circle(point, radius.loc['x'],
+                        linestyle='solid',
+                        linewidth=2,
+                        fill=False,
+                        edgecolor='b')
+    if show_points:
+        plt.plot(point.loc['x'], point.loc['x'], 'ro')
+    plt.gca().add_patch(circle)
+
+
 def main():
     points = landmarks.calculate()
     for feature_name, feature_points in facial_features.items():
         plot_spline(points[feature_points])
+
+    for feature_points in pupils['positions']:
+        plot_circle(points[feature_points], points[pupils['radius']])
     # right_eyebrow.reverse()
     # print(right_eyebrow)
     # plt.axis('off')

@@ -30,7 +30,28 @@ facial_features = {
     'upper_center_forehead_wrinkles': ["pt2c", "pt3c", "pt4c"],
     'middle_center_forehead_wrinkles': ["pt2m", "pt3m", "pt4m"],
     'lower_center_forehead_wrinkles': ["pt2b", "pt3b", "pt4b"],
+    'left_eyebrow_wrinkles': ["pis1e", "pis2e", "pis3e"],
+    'center_eyebrow_wrinkles': ["pis1c", "pis2c", "pis3c"],
+    'right_eyebrow_wrinkles': ["pis1d", "pis2d", "pis3d"],
+    'upper_eyebrow_nose_wrinkles': ["psn1c", "psn2c", "psn3c"],
+    'middle_eyebrow_nose_wrinkles': ["psn1m", "psn2m", "psn3m"],
+    'lower_eyebrow_nose_wrinkles': ["psn1b", "psn2b", "psn3b"],
+    'upper_left_nose_wrinkles': ["pn1e", "pn2e", "pn3e"],
+    'lower_left_nose_wrinkles': ["pn4e", "pn5e", "pn6e"],
+    'upper_right_nose_wrinkles': ["pn1d", "pn2d", "pn3d"],
+    'lower_right_nose_wrinkles': ["pn4d", "pn5d", "pn6d"],
+    'left_cheek_wrinkles': ["pb1e", "pb2e", "pb3e", "pb4e", "pb5e"],
+    'right_cheek_wrinkles': ["pb1d", "pb2d", "pb3d", "pb4d", "pb5d"],
+    'external_left_nasolabial_wrinkles': ["pnl1e", "pnl2e", "pnl3e"],
+    'internal_left_nasolabial_wrinkles': ["pnli1e", "pnli2e", "pnli3e"],
+    'external_right_nasolabial_wrinkles': ["pnl1d", "pnl2d", "pnl3d"],
+    'internal_right_nasolabial_wrinkles': ["pnli1d", "pnli2d", "pnli3d"],
 
+
+}
+pupils = {
+    'positions': ['pupilae', 'pupilad'],
+    'radius': ['pupilaR']
 }
 neutral_features_list = [
     'left_eyebrow',
