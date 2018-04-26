@@ -10,5 +10,4 @@ conda update -y -n base conda
 conda create --name stef
 source activate stef
 conda install -y numpy pandas xlrd matplotlib scikit-learn pathlib scipy
-pip install seasnake
 python main.py
