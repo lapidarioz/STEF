@@ -41,6 +41,9 @@ def calculate(distance_file='data/caucasiano.csv'):
     z['osd'] = ((z['p1d'][0] + z['p2d'][0]) / 2,
                 z['n'][1] - (distances['gsn'] - distances['nsn']))
 
+    add_interpolation(z, point_a='p1d', point_b='osd', name='pasd1')
+    add_interpolation(z, point_a='osd', point_b='p2d', name='pasd2')
+
     # olho esquerdo
     z['ene'] = (z['n'][0] - (distances['enen'] / 2),
                 z['n'][1] + nse)
