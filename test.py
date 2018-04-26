@@ -37,13 +37,9 @@ def main():
 
     for feature_points in pupils['positions']:
         plot_circle(points[feature_points], points[pupils['radius']])
-    # right_eyebrow.reverse()
-    # print(right_eyebrow)
-    # plt.axis('off')
-    x = points.loc['x']
-    y = points.loc['y']
-    # plt.axis([x.min() - 1, x.max() + 1, y.max() + 1, y.min() - 1])
-    plt.show()
+    plt.axis('off')
+    plt.gca().invert_yaxis()
+    plt.savefig("results/face.svg")
 
 
 if __name__ == '__main__':
